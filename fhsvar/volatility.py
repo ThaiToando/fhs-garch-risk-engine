@@ -92,3 +92,30 @@ if __name__ == "__main__":
         else:
             gamma = leverage_param(res) or 0.0
             print(f"  gamma (leverage): {gamma:.4f}  (<0 means down-days spike vol)")
+import numpy as np
+
+def forecast_vol(returns, horizon=10, model="GJR", dist="skewt"):
+    """
+    Standalone function to forecast a volatility path for a given horizon.
+    Useful for option pricing, position sizing, or vol-targeting.
+    """
+    # Assuming build_model is already defined in this file from Phase 4
+    res = build_model(returns, model, dist).fit(disp="off")
+    fc = res.forecast(horizon=horizon, reindex=False)
+    
+    # Return the forecasted volatility path (square root of variance)
+    return np.sqrt(fc.variance.values[-1, :])
+
+def qlike_loss(realized_var, predicted_var):
+    """
+    Calculate the QLIKE loss function.
+    QLIKE is robust to the noisy squared-return proxy for true, latent variance.
+    """
+    # Ensure strictly positive inputs to avoid log(0) or division by zero
+    eps = 1e-8
+    predicted_var = np.maximum(predicted_var, eps)
+    realized_var = np.maximum(realized_var, eps)
+    
+    # QLIKE formula: (Realized / Predicted) - ln(Realized / Predicted) - 1
+    loss = (realized_var / predicted_var) - np.log(realized_var / predicted_var) - 1
+    return np.mean(loss)
