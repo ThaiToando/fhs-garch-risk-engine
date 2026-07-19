@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fhsvar"
+version = "0.1.0"
+description = "Filtered Historical Simulation VaR/ES engine with GARCH volatility"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "arch>=7.0",          # GARCH-family MLE + forecasting
+    "matplotlib>=3.9",
+    "statsmodels>=0.14",
+    "yfinance>=0.2.43",
+    "streamlit>=1.39",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["fhsvar*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

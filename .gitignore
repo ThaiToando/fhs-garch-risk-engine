@@ -1,0 +1,18 @@
+# --- Python ---
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# --- environment / secrets ---
+.env
+
+# --- data & results (keep one sample only) ---
+data/*.csv
+!data/sample.csv
+results/
+
+# --- private study notes: never commit (see guide D0) ---
+INTERVIEW_NOTES.md
