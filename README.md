@@ -31,7 +31,7 @@ Demonstration of simulated multi-day GARCH paths. The naive square-root-of-time 
 ![Multi-day VaR Scaling](results/multiday_sqrt_h.png)
 
 ## Interactive Risk Lab
-This project includes a custom-built, institutional-styled dashboard built with Streamlit and Plotly. 
+This project includes a custom-built dashboard built with Streamlit and Plotly. 
 
 **To run the interactive lab locally:**
 ```bash
