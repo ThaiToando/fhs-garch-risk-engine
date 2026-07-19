@@ -15,7 +15,7 @@ class Config:
     end: str = "2024-12-31"
     alpha: float = 0.01            # 99% VaR (Basel market-risk level)
     window: int = 1000             # rolling estimation window (days)
-    model: str = "GJR"             # "GARCH" | "GJR" | "EGARCH"
+    model: str = "EGARCH"             # "GARCH" | "GJR" | "EGARCH"
     dist: str = "skewt"            # "normal" | "t" | "skewt"
     refit_every: int = 1           # refit cadence in the backtest
     returns_in_percent: bool = True
