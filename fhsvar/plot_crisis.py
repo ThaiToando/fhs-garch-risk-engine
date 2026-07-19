@@ -18,15 +18,15 @@ def plot_crisis_overlay(csv_path='results/backtest_comparison.csv'):
             label='Realized Returns', color='#2c3e50', alpha=0.3, linewidth=2)
     
     # Plot FHS VaR (solid, bold red for emphasis)
-    ax.plot(crisis_df.index, -crisis_df['fhs_exc'], 
+    ax.plot(crisis_df.index, -crisis_df['fhs_var'], 
             label='FHS VaR (99%)', color='#c0392b', linewidth=2.5)
             
     # Plot HS VaR (dashed blue)
-    ax.plot(crisis_df.index, -crisis_df['hs_exc'], 
+    ax.plot(crisis_df.index, -crisis_df['hs_var'], 
             label='Plain HS VaR (99%)', color='#2980b9', linewidth=2, linestyle='--')
             
     # Plot Normal VaR (dotted grey)
-    ax.plot(crisis_df.index, -crisis_df['normal_exc'], 
+    ax.plot(crisis_df.index, -crisis_df['normal_var'], 
             label='Normal VaR (99%)', color='#7f8c8d', linewidth=1.5, linestyle=':')
     
     # Title and axis labels formatting
